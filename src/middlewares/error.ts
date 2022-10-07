@@ -3,19 +3,14 @@ import { GenericError } from '../interfaces';
 
 export default (err: GenericError, req: Request, res: Response, _next: NextFunction) => {
   const { message, statusCode } = err;
+  let status = 500;
   if (statusCode) {
     return res.status(statusCode).json({ message });
   }
-  switch (message) {
-    case '"name" is required':
-      res.status(400).json({ message });
-      break;
-    case '"amount" is required':
-      res.status(400).json({ message });
-      break;
-    default:
-      res.status(422).json({ message });
-      break;
+  if (message.includes('required')) {
+    status = 400;
+  } else {
+    status = 422;
   }
-  return res.status(500).end();
+  return res.status(status).json({ message });
 };
