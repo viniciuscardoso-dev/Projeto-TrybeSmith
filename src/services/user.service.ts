@@ -10,7 +10,7 @@ export default class UserService {
   }
 
   async newUser({ username, classe, level, password }: IUser) {
-    const product = await this.model.newUser({ username, classe, level, password });
-    return product;
+    const user = await this.model.newUser({ username, classe, level, password });
+    return user;
   }
 }
