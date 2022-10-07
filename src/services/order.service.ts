@@ -1,3 +1,4 @@
+import Joi from 'joi';
 import OrderModel from '../models/order.model';
 import connection from '../models/connection';
 
@@ -13,9 +14,15 @@ export default class OrderService {
     return orders;
   }
 
-  async newOrder(products: number[]) {
+  async newOrder(productsIds: number[]) {
+    this.validateOrder(productsIds);
     // const order = this.model.
-    console.log(this.model);
-    return products;
+    // return products;
   }
+
+  private validateOrder = (products: number[]) => {
+    const orderField = Joi.array().items(Joi.number());
+    const { error } = orderField.validate(products);
+    if (error) throw new Error(error.message);
+  };
 }

@@ -14,10 +14,9 @@ export default class OrderController {
   }
 
   async newOrder(req: Request, res: Response, next: NextFunction) {
-    const { products } = req.body;
-    console.log(req.body);
+    const { productsIds } = req.body;
     try {
-      const newOrder = await this.orderService.newOrder(products);
+      const newOrder = await this.orderService.newOrder(productsIds);
       res.status(201).json({ newOrder });
     } catch (error) {
       next(error);
