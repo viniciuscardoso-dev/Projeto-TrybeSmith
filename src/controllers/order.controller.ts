@@ -11,10 +11,11 @@ export default class OrderController {
   async getAllOrders(req: Request, res: Response) {
     const orders = await this.orderService.getAllOrders();
     res.status(200).json(orders);
-  }
+  } 
 
   async newOrder(req: Request, res: Response, next: NextFunction) {
     const { productsIds } = req.body;
+    console.log(req);
     try {
       const newOrder = await this.orderService.newOrder(productsIds);
       res.status(201).json({ newOrder });

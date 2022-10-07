@@ -22,8 +22,8 @@ export default class OrderService {
 
   private validateOrder = (productsIds: number[]) => {
     const orderField = Joi.object({
-      productsIds: Joi.array().required().items(Joi.number()),
-    });     
+      productsIds: Joi.array().min(1).required().items(Joi.number()),
+    });
     const { error } = orderField.validate({ productsIds });
     if (error) throw new Error(error.message);
   };

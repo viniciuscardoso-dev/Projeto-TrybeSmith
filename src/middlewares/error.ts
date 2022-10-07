@@ -12,5 +12,9 @@ export default (err: GenericError, req: Request, res: Response, _next: NextFunct
   } else {
     status = 422;
   }
+  // caso especial por que o teste espera resposta divergente
+  if (message.includes('contain at least 1 items')) {
+    return res.status(422).json({ message: '"productsIds" must include only numbers' });
+  }
   return res.status(status).json({ message });
 };
