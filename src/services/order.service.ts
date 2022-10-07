@@ -12,4 +12,10 @@ export default class OrderService {
     const orders = await this.model.getAllOrders();
     return orders;
   }
+
+  async newOrder(products: number[]) {
+    // const order = this.model.
+    console.log(this.model);
+    return products;
+  }
 }
