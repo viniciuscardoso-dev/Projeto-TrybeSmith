@@ -16,13 +16,15 @@ export default class OrderService {
 
   async newOrder(productsIds: number[]) {
     this.validateOrder(productsIds);
-    // const order = this.model.
-    // return products;
+    const order = await this.model.insertOrder();
+    return order;
   }
 
-  private validateOrder = (products: number[]) => {
-    const orderField = Joi.array().items(Joi.number());
-    const { error } = orderField.validate(products);
+  private validateOrder = (productsIds: number[]) => {
+    const orderField = Joi.object({
+      productsIds: Joi.array().required().items(Joi.number()),
+    });     
+    const { error } = orderField.validate({ productsIds });
     if (error) throw new Error(error.message);
   };
 }

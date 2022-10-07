@@ -19,4 +19,12 @@ export default class OrderModel {
     const [rows] = result;
     return rows;
   }
+
+  public async insertOrder() {
+    const result = await this.connection.execute(`
+    SELECT * FROM Trybesmith.Orders;
+    `);
+    const [rows] = result;
+    return rows;
+  }
 }

@@ -1,9 +1,9 @@
 import express from 'express';
+import 'express-async-errors';
 import loginRouter from './routes/login.router';
 import productRouter from './routes/product.router';
 import userRouter from './routes/user.router';
 import orderRouter from './routes/order.router';
-import 'express-async-errors';
 import error from './middlewares/error';
 
 const app = express();
