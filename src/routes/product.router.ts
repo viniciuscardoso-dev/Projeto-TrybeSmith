@@ -7,6 +7,6 @@ const router = Router();
 
 router.get('/', (req, res) => productController.getAll(req, res));
 // router.use(authMiddleware);
-router.post('/', (req, res) => productController.newProduct(req, res));
+router.post('/', (req, res, next) => productController.newProduct(req, res, next));
 
 export default router;
