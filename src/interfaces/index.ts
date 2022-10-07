@@ -20,10 +20,9 @@ export interface IOrder {
 }
 
 export class GenericError extends Error {
-  // public details: { message: string }[];
-  public statusCode: number;
+  public statusCode: number | undefined;
 
-  constructor(message: string, statusCode: number) {
+  constructor(message: string, statusCode: number | undefined) {
     super(message);
     this.statusCode = statusCode;
   }
