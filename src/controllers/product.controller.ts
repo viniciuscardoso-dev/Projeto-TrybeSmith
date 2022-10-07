@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import ProductService from '../services/product.service';
 
 export default class ProductController {
@@ -13,9 +13,13 @@ export default class ProductController {
     res.status(200).json(products);
   }
 
-  async newProduct(req: Request, res: Response) {
+  async newProduct(req: Request, res: Response, next: NextFunction) {
     const { name, amount } = req.body;
-    const product = await this.productService.newProduct({ name, amount });
-    res.status(201).json(product);
+    try {
+      const product = await this.productService.newProduct({ name, amount });
+      res.status(201).json(product);
+    } catch (error) {
+      next(error);
+    }
   }
 }
