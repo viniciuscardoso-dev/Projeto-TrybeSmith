@@ -2,7 +2,7 @@ export interface IProduct {
   id?: number,
   name: string,
   amount: string,
-  orderId?: number
+  orderId?: number | null
 }
 
 export interface IUser {
@@ -10,12 +10,11 @@ export interface IUser {
   username: string,
   classe?: string,
   level?: number,
-  password?: string
 }
 
 export interface IOrder {
-  id: number,
-  userId: number,
+  id?: number,
+  userId?: number,
   productsIds: number[],
 }
 
