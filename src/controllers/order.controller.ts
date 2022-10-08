@@ -14,11 +14,10 @@ export default class OrderController {
   } 
 
   async newOrder(req: Request, res: Response, next: NextFunction) {
-    const { productsIds } = req.body;
-    console.log(req);
+    const { productsIds, user } = req.body;
     try {
-      const newOrder = await this.orderService.newOrder(productsIds);
-      res.status(201).json({ newOrder });
+      const newOrder = await this.orderService.newOrder(productsIds, user);
+      res.status(201).json(newOrder);
     } catch (error) {
       next(error);
     }
