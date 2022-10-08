@@ -1,6 +1,7 @@
-# Meu primeiro projeto com TS :)
+# :rocket: Projeto TrybeSmith (proposto pela Trybe) :rocket:
 
-### O projeto se trata de uma API crud desenvolvida com typesript, todos os arquivos em /src foram desenvolvidos por mim.
+### Este é o meu primeiro projeto com TS :)
+Trata-se de uma API crud desenvolvida com typesript, todos os arquivos em /src foram desenvolvidos por mim.
 
 <img src="/image.png" alt="resultado evaluation"/>
 
