@@ -14,6 +14,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
   }
   try {
     jwt.verify(authorization as string, secret);
+    req.body.user = jwt.decode(authorization); 
     next();
   } catch (e) {
     throw new GenericError('Invalid token', 401);
